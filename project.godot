@@ -13,7 +13,11 @@ config_version=5
 config/name="ProductivityTimer"
 run/main_scene="res://Main.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0.0117647, 0.188235, 0.258824, 1)
+boot_splash/image="res://icon.png"
+config/icon="res://icon.png"
+config/windows_native_icon="res://icon.ico"
+boot_splash/minimum_display_time=1000
 
 [autoload]
 

@@ -111,7 +111,6 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("1_yslqy")
 theme_override_font_sizes/font_size = 50
 alignment = 1
-selected = 0
 
 [node name="ProjectContainer" type="VBoxContainer" parent="MainContainer/VBoxContainer"]
 layout_mode = 2
