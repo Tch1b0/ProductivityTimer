@@ -1,0 +1,171 @@
+[gd_scene load_steps=10 format=3 uid="uid://b3t7p4dcic6ja"]
+
+[ext_resource type="Script" path="res://Main.gd" id="1_goq5l"]
+[ext_resource type="FontFile" uid="uid://ddtqsr6f1ei4o" path="res://default_font.ttf" id="1_yslqy"]
+[ext_resource type="Texture2D" uid="uid://cfd76kl0bf0w4" path="res://parallax/Layer0.png" id="3_0x0om"]
+[ext_resource type="Texture2D" uid="uid://cegno5vuogf75" path="res://parallax/Layer1.png" id="3_k3gj4"]
+[ext_resource type="Texture2D" uid="uid://chpcylci1o6ei" path="res://parallax/Layer2.png" id="4_sn46n"]
+[ext_resource type="Texture2D" uid="uid://ct7jyv8hgmisv" path="res://parallax/PyramidLayer.png" id="5_5o658"]
+[ext_resource type="Texture2D" uid="uid://bur26c5iqm2wk" path="res://parallax/Layer3.png" id="6_b4gt6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_02vrj"]
+line_spacing = 0.0
+font = ExtResource("1_yslqy")
+font_size = 175
+font_color = Color(1, 1, 0.823529, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1okvl"]
+font = ExtResource("1_yslqy")
+font_size = 200
+font_color = Color(0.690196, 1, 1, 1)
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_goq5l")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+offset = Vector2(-300, -200)
+scale = Vector2(1.355, 1.355)
+transform = Transform2D(1.355, 0, 0, 1.355, -300, -200)
+
+[node name="Sky" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Sky"]
+texture_filter = 1
+scale = Vector2(3, 3)
+texture = ExtResource("3_0x0om")
+centered = false
+
+[node name="Clouds" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Clouds"]
+texture_filter = 1
+scale = Vector2(3, 3)
+texture = ExtResource("3_k3gj4")
+centered = false
+
+[node name="BackgroundHill" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/BackgroundHill"]
+texture_filter = 1
+scale = Vector2(3, 3)
+texture = ExtResource("4_sn46n")
+centered = false
+
+[node name="Pyramid" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Pyramid"]
+texture_filter = 1
+scale = Vector2(3, 3)
+texture = ExtResource("5_5o658")
+centered = false
+
+[node name="ForegroundHill" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ForegroundHill"]
+texture_filter = 1
+scale = Vector2(3, 3)
+texture = ExtResource("6_b4gt6")
+centered = false
+
+[node name="CanvasModulate" type="CanvasModulate" parent="ParallaxBackground"]
+color = Color(0.294118, 0.294118, 0.294118, 1)
+
+[node name="MainContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.998
+anchor_bottom = 1.0
+offset_right = -0.160034
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainContainer"]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+theme_override_constants/separation = 100
+
+[node name="ProjectSelectionContainer" type="VBoxContainer" parent="MainContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(750, 0)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="NewProjectEdit" type="LineEdit" parent="MainContainer/VBoxContainer/ProjectSelectionContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_yslqy")
+theme_override_font_sizes/font_size = 50
+placeholder_text = "New Project [Enter]"
+alignment = 1
+
+[node name="ProjectSelection" type="OptionButton" parent="MainContainer/VBoxContainer/ProjectSelectionContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_yslqy")
+theme_override_font_sizes/font_size = 50
+alignment = 1
+selected = 0
+
+[node name="ProjectContainer" type="VBoxContainer" parent="MainContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MainContainer/VBoxContainer/ProjectContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "Project Title"
+label_settings = SubResource("LabelSettings_02vrj")
+horizontal_alignment = 1
+
+[node name="Time" type="Label" parent="MainContainer/VBoxContainer/ProjectContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "00:00"
+label_settings = SubResource("LabelSettings_1okvl")
+horizontal_alignment = 1
+
+[node name="Buttons" type="HBoxContainer" parent="MainContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="StartButton" type="Button" parent="MainContainer/VBoxContainer/Buttons"]
+unique_name_in_owner = true
+layout_direction = 1
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_yslqy")
+theme_override_font_sizes/font_size = 100
+text = "Start"
+
+[node name="PauseButton" type="Button" parent="MainContainer/VBoxContainer/Buttons"]
+unique_name_in_owner = true
+visible = false
+layout_direction = 1
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_yslqy")
+theme_override_font_sizes/font_size = 100
+text = "Pause"
+
+[node name="TimeEmitterTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="AutoSaveTimer" type="Timer" parent="."]
+wait_time = 60.0
+autostart = true
+
+[connection signal="item_selected" from="MainContainer/VBoxContainer/ProjectSelectionContainer/ProjectSelection" to="." method="_on_project_selection_item_selected"]
+[connection signal="pressed" from="MainContainer/VBoxContainer/Buttons/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MainContainer/VBoxContainer/Buttons/PauseButton" to="." method="_on_pause_button_pressed"]
+[connection signal="timeout" from="TimeEmitterTimer" to="." method="_on_time_emitter_timer_timeout"]
+[connection signal="timeout" from="AutoSaveTimer" to="." method="_on_auto_save_timer_timeout"]
