@@ -77,3 +77,6 @@ func _on_auto_save_timer_timeout():
 func _on_project_selection_item_selected(idx):
 	_on_auto_save_timer_timeout()
 	selected_project = FileManager.projects[idx]
+
+func _on_tree_exiting():
+	FileManager.save_projects()

@@ -163,6 +163,7 @@ autostart = true
 wait_time = 60.0
 autostart = true
 
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
 [connection signal="item_selected" from="MainContainer/VBoxContainer/ProjectSelectionContainer/ProjectSelection" to="." method="_on_project_selection_item_selected"]
 [connection signal="pressed" from="MainContainer/VBoxContainer/Buttons/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="MainContainer/VBoxContainer/Buttons/PauseButton" to="." method="_on_pause_button_pressed"]

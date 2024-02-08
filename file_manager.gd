@@ -17,6 +17,8 @@ func load_projects() -> Array:
 	return self.projects
 
 func save_projects() -> void:
+	if len(projects) == 0: return
+	
 	var serialized = []
 	for proj in projects:
 		serialized.append(proj.to_dict())
